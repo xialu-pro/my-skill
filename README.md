@@ -29,6 +29,14 @@
 2. 将skill目录复制到您的Claude Code skills目录（通常为 `.agents/skills/`）
 3. 在Claude Code中使用触发词激活skill
 
+## 检视报告
+
+检视报告存放在 `audits/` 目录：
+
+- `audits/2026-04-14-openEuler-快速入门-改写版.md` - openEuler快速入门文档检视报告（总分45/100）
+
+---
+
 ## 许可证
 
 Apache-2.0
