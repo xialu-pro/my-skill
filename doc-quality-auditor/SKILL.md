@@ -1,6 +1,6 @@
 ---
 name: doc-quality-auditor
-description: '用43项CORE-EEAT指标检视文档质量（排除开发/工程项、独特性维度、第一人称证明及作者身份）。评分GEO+SEO可见性，识别快速修复点，生成可执行报告。文档质量检视/内容评分'
+description: '用42项CORE-EEAT指标检视文档质量（排除开发/工程项、独特性维度、第一人称证明、作者身份及编辑流程）。评分GEO+SEO可见性，识别快速修复点，生成可执行报告。文档质量检视/内容评分'
 version: "1.0.0"
 license: Apache-2.0
 compatibility: "Claude Code >=1.0, skills.sh marketplace, ClawHub marketplace. 无系统依赖，适用于任何文本内容。"
@@ -66,13 +66,13 @@ metadata:
     - "score my document"
     - "CORE-EEAT audit"
     - "content benchmark"
-    - "43项指标检视"
-    - "文档43项检查"
+    - "42项指标检视"
+    - "文档42项检查"
 ---
 
 # 文档质量检视器
 
-> **[CORE-EEAT内容基准](https://github.com/aaron-he-zhu/core-eeat-content-benchmark)** - 43项文档级质量指标（排除开发/工程类指标、独特性维度、第一人称证明及作者身份）
+> **[CORE-EEAT内容基准](https://github.com/aaron-he-zhu/core-eeat-content-benchmark)** - 42项文档级质量指标（排除开发/工程类指标、独特性维度、第一人称证明、作者身份及编辑流程）
 > **系统模式**: 内容检视类skill，面向内容编写者和文档团队。聚焦写作质量，不涉及技术实现。
 
 使用CORE-EEAT框架检视文档质量，排除所有需要代码或系统修改的技术/工程类指标。生成可执行的评分和改进建议。
@@ -115,7 +115,7 @@ metadata:
 - `audit document quality`
 - `check document quality`
 - `score my document`
-- `43项指标检视`
+- `42项指标检视`
 
 **使用示例**:
 ```
@@ -130,7 +130,7 @@ audit document quality --format scorecard
 
 ## 此Skill的功能
 
-1. **43项评估**: 评估所有适用于文档写作的CORE-EEAT指标（排除开发/工程类、独特性维度、第一人称证明及作者身份）
+1. **42项评估**: 评估所有适用于文档写作的CORE-EEAT指标（排除开发/工程类、独特性维度、第一人称证明、作者身份及编辑流程）
 2. **维度评分**: 分别计算7个维度（C、O、R、Exp、Ept、A、T）得分
 3. **Veto检查**: 识别关键失败项（T04、C01、R10）需立即处理
 4. **快速修复**: 按优先级列出Top 5改进建议，附带具体指导
@@ -171,11 +171,12 @@ audit document quality --format scorecard
 | Exp | Exp01第一人称叙述 | 技术文档通常使用第三人称客观描述 |
 | Exp | Exp02感官细节 | 技术文档不使用主观感官描述 |
 
-### 作者身份类指标排除
+### 作者身份及编辑流程类指标排除
 
 | 维度 | 排除项 | 原因 |
 |------|--------|------|
 | Ept | Ept01作者身份 | 技术文档通常不强调个人作者身份 |
+| Ept | Ept10编辑流程 | 技术文档通常无审核人标签展示流程 |
 
 ### 开发/工程类排除
 
@@ -187,7 +188,7 @@ audit document quality --format scorecard
 | A | A01-A04、A07 | 外链/媒体/奖项展示页面 |
 | T | T01-T03、T05、T07、T10 | 法律页面、HTTPS、广告配置、客服系统 |
 
-**保留总计**: 43项（CORE: 28项，EEAT: 15项）
+**保留总计**: 42项（CORE: 28项，EEAT: 14项）
 
 ## Skill契约
 
@@ -292,7 +293,7 @@ audit document quality --format scorecard
 | Exp08 | 量化指标 | Dual | 可测量体验数据 |
 | Exp10 | 局限声明 | GEO | 声明"仅测试X场景" |
 
-#### Ept - 专业性（9项，排除Ept01）
+#### Ept - 专业性（8项，排除Ept01/Ept10）
 
 | ID | 检查项 | 优先级 | Pass标准 |
 |----|--------|--------|----------|
@@ -304,7 +305,6 @@ audit document quality --format scorecard
 | Ept07 | 历史背景 | SEO | 领域演进知识 |
 | Ept08 | 推理透明 | GEO | "选A而非B因为..." |
 | Ept09 | 跨域整合 | Dual | 跨领域知识整合 |
-| Ept10 | 编辑流程 | SEO | "审核人"标签可见 |
 
 #### A - 权威性（5项，排除A01-A04/A07）
 
@@ -355,7 +355,7 @@ SEO分数 = (Exp + Ept + A + T) / 4
 3. **维度分解**: 每维度得分及Pass/Partial/Fail计数
 4. **Top 5快速修复**: 最高影响改进，附带具体指导
 5. **GEO vs SEO分离**: 按优先级分离建议
-6. **完整清单**: 全43项评估表
+6. **完整清单**: 全42项评估表
 
 **质量标准** - 每个修复建议必须具体：
 
@@ -403,7 +403,7 @@ SEO分数 = (Exp + Ept + A + T) / 4
 - [ ] 用户目标已声明（GEO/SEO/两者）
 
 ### 输出验证
-- [ ] 所有43项已评估
+- [ ] 所有42项已评估
 - [ ] Veto项已优先检查
 - [ ] 每个建议包含具体行号或位置
 - [ ] GEO vs SEO建议已分离
@@ -454,7 +454,7 @@ SEO分数 = (Exp + Ept + A + T) / 4
 
 ## 参考资料
 
-- [43项完整清单](./references/43-item-checklist.md) - 全43项Pass/Partial/Fail标准
+- [42项完整清单](./references/42-item-checklist.md) - 全42项Pass/Partial/Fail标准
 - [CORE-EEAT原始基准](https://github.com/aaron-he-zhu/core-eeat-content-benchmark) - 原始80项框架（含开发项）
 - [常见错误指南](https://github.com/aaron-he-zhu/core-eeat-content-benchmark#common-errors) - 需避免的15大写作错误
 

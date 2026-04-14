@@ -6,7 +6,7 @@
 
 ### doc-quality-auditor
 
-**描述**: 用43项CORE-EEAT指标检视文档质量（排除开发/工程项、独特性维度、第一人称证明及作者身份）。评分GEO+SEO可见性，识别快速修复点，生成可执行报告。
+**描述**: 用42项CORE-EEAT指标检视文档质量（排除开发/工程项、独特性维度、第一人称证明、作者身份及编辑流程）。评分GEO+SEO可见性，识别快速修复点，生成可执行报告。
 
 **触发词**:
 - 文档质量检视
@@ -14,12 +14,12 @@
 - 内容质量评分
 - 检视技术文档
 - audit document quality
-- 43项指标检视
+- 42项指标检视
 - 文档写得怎么样
 
 **文件**:
 - `doc-quality-auditor/SKILL.md` - Skill主文件
-- `doc-quality-auditor/references/43-item-checklist.md` - 43项详细检查清单
+- `doc-quality-auditor/references/42-item-checklist.md` - 42项详细检查清单
 
 **来源**: 衍生自 [CORE-EEAT Content Benchmark](https://github.com/aaron-he-zhu/core-eeat-content-benchmark)
 
