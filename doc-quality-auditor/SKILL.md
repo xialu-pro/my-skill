@@ -113,7 +113,6 @@ metadata:
 - `audit document quality`
 - `check document quality`
 - `score my document`
-- `42项指标检视`
 
 **使用示例**:
 ```
