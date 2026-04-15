@@ -1,6 +1,6 @@
 ---
 name: doc-quality-auditor
-description: '用42项CORE-EEAT指标检视文档质量（排除开发/工程项、独特性维度、第一人称证明、作者身份及编辑流程）。评分GEO+SEO可见性，识别快速修复点，生成可执行报告。文档质量检视/内容评分'
+description: '用42项CORE-EEAT指标检视文档质量。评分GEO+SEO可见性，识别快速修复点，生成可执行报告。文档质量检视/内容评分'
 version: "1.0.0"
 license: Apache-2.0
 compatibility: "Claude Code >=1.0, skills.sh marketplace, ClawHub marketplace. 无系统依赖，适用于任何文本内容。"
@@ -66,8 +66,6 @@ metadata:
     - "score my document"
     - "CORE-EEAT audit"
     - "content benchmark"
-    - "42项指标检视"
-    - "文档42项检查"
 ---
 
 # 文档质量检视器
