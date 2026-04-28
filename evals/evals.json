@@ -1,0 +1,20 @@
+{
+  "skill_name": "doc-cli-tester",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "帮我测试这个文档里的命令能不能跑通：\n\n# Redis 快速入门\n\n## 安装 Redis\n\n```bash\ndnf install -y redis\n```\n\n## 启动服务\n\n```bash\nsystemctl start redis\nsystemctl enable redis\n```\n\n## 验证安装\n\n```bash\nredis-cli ping\n```\n\n预期输出：\n```\nPONG\n```\n\n## 查看状态\n\n```bash\nsystemctl status redis\n```\n\n## 查看版本\n\n```bash\nredis-cli --version\n```",
+      "expected_output": "提取出所有命令，正确分类（systemctl为变更类，redis-cli ping为只读类），生成测试脚本，输出测试报告，区分环境限制和文档问题"
+    },
+    {
+      "id": 2,
+      "prompt": "请验证以下 openEuler 快速入门文档中的命令是否都能执行：\n\n## Step 4：验证安装成功\n\n### 4.2 查看系统信息\n\n```bash\ncat /etc/os-release\n```\n\n预期输出：\n```\nNAME=\"openEuler\"\nVERSION=\"24.03 (LTS SP3)\"\n```\n\n### 4.3 查看硬件信息\n\n查看CPU：\n```bash\nlscpu\n```\n\n查看内存：\n```bash\nfree -h\n```\n\n查看磁盘：\n```bash\nfdisk -l\n```\n\n查看IP地址：\n```bash\nip addr\n```\n\n### 4.4 完成基础初始化\n\n```bash\n# 更新系统\ndnf update -y\n\n# 设置时区\ntimedatectl set-timezone Asia/Shanghai\n\n# 验证时间同步\nsystemctl status chronyd\n```\n\n### FAQ\n\nQ: chronyd 服务未运行怎么办？\n\n执行以下命令启用：\n```bash\nsystemctl enable --now chronyd\n```\n\n如果网络有问题，通过交互界面重新配置：\n```bash\nnmtui\n```",
+      "expected_output": "正确识别不可自动化命令（nmtui为交互式），生成带SKIP标注的测试脚本，报告区分环境限制与文档问题，给出文档改进建议"
+    },
+    {
+      "id": 3,
+      "prompt": "这个文档的命令帮我测一下，看哪些有问题：\n\n# Nginx 部署指南\n\n## 1. 安装\n\n```bash\napt-get install -y nginx\n```\n\n## 2. 启动\n\n```bash\nsystemctl start nginx\n```\n\n## 3. 检查端口\n\n```bash\nnetstat -tlnp | grep 80\n```\n\n## 4. 查看日志\n\n```bash\ntail -f /var/log/nginx/acess.log\n```\n\n## 5. 测试配置\n\n```bash\nnginx -t\n```\n\n## 6. 重载配置\n\n```bash\nnginx -s releod\n```",
+      "expected_output": "发现文档中的拼写错误（acess.log应为access.log，releod应为reload），在报告中标注为文档问题而非环境问题，生成含错误标注的测试脚本"
+    }
+  ]
+}
