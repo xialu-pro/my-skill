@@ -353,7 +353,7 @@ audit document quality --format scorecard
 
 ## CORE-EEAT维度检视
 
-以下为CORE-EEAT框架的49项指标：
+以下为CORE-EEAT框架的38项指标：
 
 #### C - 上下文清晰度（10项）
 
@@ -384,7 +384,7 @@ audit document quality --format scorecard
 | O09 | 信息密度 | GEO | 无填充，术语一致 |
 | O10 | 多媒体结构 | Dual | 图片有说明/目的 |
 
-#### R - 可引用性（9项，排除R09）
+#### R - 可引用性（10项，排除R09，含T06）
 
 | ID | 检查项 | 优先级 | Pass标准 |
 |----|--------|--------|----------|
@@ -397,47 +397,26 @@ audit document quality --format scorecard
 | R07 | 实体精确 | GEO | 全名，无模糊引用 |
 | R08 | 内链图谱 | SEO | 描述性锚文本 |
 | R10 | 内容一致 | Dual | 数据自洽，无404 |
+| T06 | 更正与更新政策 | Dual | 更正页/修订历史存在 |
 
-#### Exp - 经验（5项，排除Exp01/02/04/07/09）
+#### Exp - 经验（4项，排除Exp01/02/04/05/07/09）
 
 | ID | 检查项 | 优先级 | Pass标准 |
 |----|--------|--------|----------|
 | Exp03 | 过程记录 | Dual | 带时间线的步骤过程 |
-| Exp05 | 使用时长 | SEO | 声明测试/使用时长 |
 | Exp06 | 遇到问题 | Dual | 分享>=2问题+解决方案 |
 | Exp08 | 量化指标 | Dual | 可测量体验数据 |
 | Exp10 | 局限声明 | GEO | 声明"仅测试X场景" |
 
-#### Ept - 专业性（8项，排除Ept01/Ept10）
+#### Ept - 专业性（5项，排除Ept01/02/07/09/10）
 
 | ID | 检查项 | 优先级 | Pass标准 |
 |----|--------|--------|----------|
-| Ept02 | 资质展示 | SEO | 相关学位/证书/经验 |
 | Ept03 | 专业词汇 | Dual | 行业术语准确使用 |
 | Ept04 | 技术深度 | Dual | 参数/阈值可执行 |
 | Ept05 | 方法严谨 | GEO | 可复现分析方法 |
 | Ept06 | 边界认知 | Dual | 讨论>=2例外情况 |
-| Ept07 | 历史背景 | SEO | 领域演进知识 |
 | Ept08 | 推理透明 | GEO | "选A而非B因为..." |
-| Ept09 | 跨域整合 | Dual | 跨领域知识整合 |
-
-#### A - 权威性（5项，排除A01-A04/A07）
-
-| ID | 检查项 | 优先级 | Pass标准 |
-|----|--------|--------|----------|
-| A05 | 品牌认知 | Dual | 品牌有搜索量 |
-| A06 | 社会认同 | SEO | 真实用户评价 |
-| A08 | 实体一致 | GEO | 品牌信息全网一致 |
-| A09 | 合作信号 | SEO | 与权威组织合作 |
-| A10 | 社区地位 | SEO | 专业社区活跃 |
-
-#### T - 信任（3项，排除T01-T05/T07/T10）
-
-| ID | 检查项 | 优先级 | Pass标准 |
-|----|--------|--------|----------|
-| T06 | 更正与更新政策 | Dual | 更正页/修订历史存在 |
-| T08 | 风险免责 | Dual | YMYL话题有免责 |
-| T09 | 评价真实性 | Dual | 评价显示真实信号 |
 
 ### 阶段4/5: 评分
 
@@ -480,15 +459,13 @@ audit document quality --format scorecard
 |------|--------|----------|
 | C | 10项 | sum(C01-C10) |
 | O | 9项 | sum × 100/90 |
-| R | 9项 | sum × 100/90 |
-| Exp | 5项 | sum × 100/50 |
-| Ept | 8项 | sum × 100/80 |
-| A | 5项 | sum × 100/50 |
-| T | 3项 | sum × 100/30 |
+| R | 10项 | sum(R01-R08+R10+T06) |
+| Exp | 4项 | sum × 100/40 |
+| Ept | 5项 | sum × 100/50 |
 
 ```
 GEO得分 = (C + O + R) / 3
-SEO得分 = (Exp + Ept + A + T) / 4
+SEO得分 = (Exp + Ept) / 2
 CORE-EEAT总分 = (GEO + SEO) / 2
 ```
 
@@ -530,7 +507,7 @@ CORE-EEAT总分 = (GEO + SEO) / 2
 3. **维度分解**: 每维度得分及Pass/Partial/Fail计数
 4. **Top 5快速修复**: 最高影响改进，附带具体指导
 5. **GEO vs SEO分离**: 按优先级分离建议
-6. **完整清单**: 全49项评估表
+6. **完整清单**: 全38项评估表
 
 **质量标准** - 每个修复建议必须具体：
 
@@ -540,7 +517,7 @@ CORE-EEAT总分 = (GEO + SEO) / 2
 | "修复标题层级" | "第45行H3改为H2；当前结构从H1直接跳到H3" |
 | "增加引用" | "第78行主张后添加引用——当前'研究表明'无来源" |
 
-> **参考**: 见 [references/49-item-checklist.md](./references/49-item-checklist.md) 完整Pass/Partial/Fail标准。
+> **参考**: 见 [references/38-item-checklist.md](./references/38-item-checklist.md) 完整Pass/Partial/Fail标准。
 
 ## 输出格式
 
@@ -584,7 +561,7 @@ CORE-EEAT总分 = (GEO + SEO) / 2
 - Veto检查结果
 - 维度分解表格
 - Top 5快速修复建议
-- 完整49项评估清单
+- 完整38项评估清单
 
 ## 验证检查点
 
@@ -595,7 +572,7 @@ CORE-EEAT总分 = (GEO + SEO) / 2
 - [ ] 用户目标已声明（GEO/SEO/两者）
 
 ### 输出验证
-- [ ] 所有49项已评估
+- [ ] 所有38项已评估
 - [ ] Veto项已优先检查
 - [ ] 每个建议包含具体行号或位置
 - [ ] GEO vs SEO建议已分离
@@ -646,6 +623,6 @@ CORE-EEAT总分 = (GEO + SEO) / 2
 
 ## 参考资料
 
-- [49项完整清单](./references/49-item-checklist.md) - 全49项Pass/Partial/Fail标准
+- [38项完整清单](./references/38-item-checklist.md) - 全38项Pass/Partial/Fail标准
 - [CORE-EEAT原始基准](https://github.com/aaron-he-zhu/core-eeat-content-benchmark) - 原始80项框架（含开发项）
 - [常见错误指南](https://github.com/aaron-he-zhu/core-eeat-content-benchmark#common-errors) - 需避免的15大写作错误
