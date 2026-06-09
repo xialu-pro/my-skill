@@ -112,11 +112,11 @@ plainText
 
 > 用 42 项 CORE-EEAT 指标 + 5 维度文档框架检视文档质量
 
-**触发词**：文档质量检视 / 检视文档质量 / 内容质量评分 / 42项指标检视 / 文档写得怎么样 / audit document quality
+**触发词**：文档质量检视 / 检视文档质量 / 内容质量评分 / 49项指标检视 / 文档写得怎么样 / audit document quality
 
 **目录结构**：
 
-doc-quality-auditor/ ├── SKILL.md # 主指令文件 └── references/ └── 42-item-checklist.md # 42项详细检查清单
+doc-quality-auditor/ ├── SKILL.md # 主指令文件 └── references/ └── 49-item-checklist.md # 49项详细检查清单
 
 
 plainText
@@ -147,7 +147,7 @@ plainText
 
 plainText
 
-- **Veto 检查**：3 个关键项（T04 推广链接未披露 / C01 标题与内容不符 / R10 核心数据自相矛盾），有失败立即停止并警告
+- **Veto 检查**：2 个关键项（C01 标题与内容不符 / R10 核心数据自相矛盾），有失败立即停止并警告
 - **GEO/SEO 分离**：区分 GEO 优先（AI 引用）和 SEO 优先（搜索排名）建议
 
 **3 种输出格式**：
