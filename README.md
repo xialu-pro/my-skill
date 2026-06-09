@@ -112,11 +112,11 @@ plainText
 
 > 用 42 项 CORE-EEAT 指标 + 5 维度文档框架检视文档质量
 
-**触发词**：文档质量检视 / 检视文档质量 / 内容质量评分 / 49项指标检视 / 文档写得怎么样 / audit document quality
+**触发词**：文档质量检视 / 检视文档质量 / 内容质量评分 / 38项指标检视 / 文档写得怎么样 / audit document quality
 
 **目录结构**：
 
-doc-quality-auditor/ ├── SKILL.md # 主指令文件 └── references/ └── 49-item-checklist.md # 49项详细检查清单
+doc-quality-auditor/ ├── SKILL.md # 主指令文件 └── references/ └── 38-item-checklist.md # 38项详细检查清单
 
 
 plainText
