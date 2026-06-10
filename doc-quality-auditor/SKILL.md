@@ -218,8 +218,8 @@ audit document quality --format scorecard
 **预期输出**: 带Pass/Partial/Fail评分的检视报告、维度得分、Veto警报、优先行动项。
 
 - **读取**: 文档内容（文件或URL）、用户输出格式偏好
-- **写入**: 检视报告输出给用户，可选保存到 `memory/audits/YYYY-MM-DD-<文档名>.md`
-- **提升**: 多次检视发现模式时，提升质量发现到 `memory/hot-cache.md`
+- **写入**: 检视报告输出给用户，同时保存到 `audits/YYYY-MM-DD-<文档名>文档质量检查.md` 和 `audits/YYYY-MM-DD-<文档名>文档质量检查.html`
+- **提升**: 多次检视发现模式时，提升质量发现到 `audits/patterns.md`
 - **下一步**: 用 `seo-content-writer` 修复发现的问题，或用 `on-page-seo-auditor` 进行更广泛的页面分析
 
 ## 数据来源
@@ -550,18 +550,41 @@ CORE-EEAT总分 = (GEO + SEO) / 2
 
 **报告完成后上传至 `audits` 文件夹**：
 
-检视报告生成后，应保存至项目的 `audits` 文件夹，命名格式：
-- 单文档检视：`<文档名>-CORE-EEAT检视报告.md`
-- 对比检视：`<文档A>-vs-<文档B>-对比检视报告.md`
-- 原文备份：`<文档名>-原文.md`
+检视报告生成后，必须同时输出 **MD** 和 **HTML** 两种格式，保存至项目的 `audits` 文件夹，命名格式：
+- MD报告：`YYYY-MM-DD-<文档名>文档质量检查.md`
+- HTML报告：`YYYY-MM-DD-<文档名>文档质量检查.html`
+- 对比检视MD：`YYYY-MM-DD-<文档A>-vs-<文档B>文档质量检查.md`
+- 对比检视HTML：`YYYY-MM-DD-<文档A>-vs-<文档B>文档质量检查.html`
+- 原文备份：`YYYY-MM-DD-<文档名>-原文.md`
 
-保存内容包括：
+#### HTML报告要求
+
+HTML报告必须是一个完整的、可直接在浏览器中打开的自包含HTML文件，要求：
+- 包含 `<!DOCTYPE html>`、`<html lang="zh-CN">`、`<head>` 完整结构
+- 包含 `<meta charset="UTF-8">` 声明，确保中文不乱码
+- 包含 `<meta name="viewport">` 适配移动端
+- 所有CSS样式内联在 `<style>` 标签中，不依赖外部样式表
+- 包含以下视觉元素：
+  - 综合评分大字展示（分数+等级徽章）
+  - Veto检查结果
+  - 5维度文档框架评分表（含进度条）
+  - CORE-EEAT维度得分汇总表
+  - 38项完整检查清单（Pass/Partial/Fail彩色标签）
+  - Top 5快速修复项（按严重程度分色）
+  - Issue提交模板（可一键复制）
+- 使用响应式布局，适配桌面和移动端
+- 文件末尾包含检视工具版本和日期
+
+#### MD报告要求
+
+MD报告包含完整的文字版检视结果：
 - 检视日期和文档来源
 - 总分/GEO分/SEO分及等级
 - Veto检查结果
 - 维度分解表格
 - Top 5快速修复建议
 - 完整38项评估清单
+- Issue提交模板
 
 ## 验证检查点
 
@@ -614,12 +637,17 @@ CORE-EEAT总分 = (GEO + SEO) / 2
 
 > "保存此检视供后续参考？"
 
-如确认，写入 `memory/audits/YYYY-MM-DD-<文档名>.md` 包含：
+如确认，写入 `audits/` 文件夹，同时生成 MD 和 HTML 两种格式：
+- `audits/YYYY-MM-DD-<文档名>文档质量检查.md` — 文字版检视报告
+- `audits/YYYY-MM-DD-<文档名>文档质量检查.html` — 可视化评分报告（完整HTML结构，UTF-8编码，内联CSS）
+
+保存内容包括：
 - 文档名和类型
 - 总分/GEO分/SEO分及等级
 - Top 5修复
 - 完整清单结果
 - 日期和检视者备注
+- Issue提交模板
 
 ## 参考资料
 
