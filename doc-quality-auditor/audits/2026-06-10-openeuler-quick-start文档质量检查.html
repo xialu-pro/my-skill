@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>openEuler 快速入门 - 文档质量检查报告</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans SC",sans-serif;background:#f0f2f5;color:#1a1a2e;line-height:1.7;padding:20px}
+.container{max-width:960px;margin:0 auto}
+h1{font-size:1.8rem;text-align:center;margin-bottom:8px;color:#1a1a2e}
+h2{font-size:1.3rem;margin:28px 0 14px;padding-bottom:8px;border-bottom:2px solid #e2e8f0;color:#334155}
+h3{font-size:1.1rem;margin:16px 0 8px;color:#475569}
+.subtitle{text-align:center;color:#64748b;margin-bottom:24px;font-size:.95rem}
+.card{background:#fff;border-radius:12px;padding:24px;margin-bottom:20px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.score-hero{text-align:center;padding:32px}
+.score-big{font-size:3.5rem;font-weight:800;line-height:1}
+.score-label{font-size:1rem;color:#64748b;margin-top:4px}
+.score-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-top:20px}
+.score-item{text-align:center;padding:12px;border-radius:8px;background:#f8fafc}
+.score-item .num{font-size:1.6rem;font-weight:700}
+.score-item .lbl{font-size:.8rem;color:#64748b}
+table{width:100%;border-collapse:collapse;font-size:.9rem}
+th{background:#f1f5f9;padding:10px 12px;text-align:left;font-weight:600;border-bottom:2px solid #e2e8f0}
+td{padding:10px 12px;border-bottom:1px solid #f1f5f9}
+tr:hover td{background:#fafbfc}
+.badge{display:inline-block;padding:3px 10px;border-radius:12px;font-size:.8rem;font-weight:600}
+.badge-pass{background:#dcfce7;color:#166534}
+.badge-partial{background:#fef9c3;color:#854d0e}
+.badge-fail{background:#fee2e2;color:#991b1b}
+.badge-poor{background:#fee2e2;color:#991b1b}
+.badge-low{background:#fed7aa;color:#9a3412}
+.progress-bar{height:8px;background:#e2e8f0;border-radius:4px;overflow:hidden;margin-top:4px}
+.progress-fill{height:100%;border-radius:4px}
+.fill-poor{background:#ef4444}
+.fill-low{background:#f97316}
+.check-list{list-style:none}
+.check-list li{padding:8px 0;border-bottom:1px solid #f1f5f9;display:flex;align-items:flex-start;gap:8px}
+.check-list li:last-child{border-bottom:none}
+.tag{display:inline-block;padding:2px 8px;border-radius:4px;font-size:.75rem;font-weight:600;margin-right:6px;white-space:nowrap}
+.tag-pass{background:#dcfce7;color:#166534}
+.tag-partial{background:#fef9c3;color:#854d0e}
+.tag-fail{background:#fee2e2;color:#991b1b}
+.fix-item{padding:14px;margin-bottom:12px;border-radius:8px;border-left:4px solid}
+.fix-critical{border-color:#ef4444;background:#fef2f2}
+.fix-important{border-color:#f97316;background:#fff7ed}
+.footer{text-align:center;color:#94a3b8;font-size:.8rem;margin-top:32px;padding:16px}
+pre{white-space:pre-wrap;word-break:break-word}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>openEuler 快速入门 - 文档质量检查报告</h1>
+<p class="subtitle">24.03 LTS SP3 · 检视日期: 2026-06-10 · 38项CORE-EEAT指标 + 5维度文档框架</p>
+<h2>1. 综合评分</h2>
+<div class="card score-hero">
+<div class="score-big" style="color:#ef4444">36.7<span style="font-size:1.5rem;color:#94a3b8">/100</span></div>
+<div class="score-label">综合总分 · <span class="badge badge-poor">Poor（需重构）</span></div>
+<div class="score-grid">
+<div class="score-item"><div class="num" style="color:#f97316">46</div><div class="lbl">文档框架</div></div>
+<div class="score-item"><div class="num" style="color:#ef4444">27.3</div><div class="lbl">CORE-EEAT</div></div>
+<div class="score-item"><div class="num" style="color:#ef4444">33.0</div><div class="lbl">GEO可见性</div></div>
+<div class="score-item"><div class="num" style="color:#ef4444">21.5</div><div class="lbl">SEO排名</div></div>
+</div>
+</div>
+<h2>2. Veto 检查</h2>
+<div class="card">
+<table>
+<tr><td>C01 意图匹配</td><td><span class="badge badge-pass">Pass</span> 标题与内容匹配</td></tr>
+<tr><td>R10 数据矛盾</td><td><span class="badge badge-pass">Pass</span> 未发现核心数据自相矛盾</td></tr>
+</table>
+</div>
+<h2>3. 文档框架评分（5维度）</h2>
+<div class="card">
+<table>
+<thead><tr><th>维度</th><th>分数</th><th>等级</th><th>进度</th></tr></thead>
+<tbody>
+<tr><td>结构逻辑性</td><td>12/20</td><td><span class="badge badge-partial">Partial</span></td><td><div class="progress-bar"><div class="progress-fill fill-low" style="width:60%"></div></div></td></tr>
+<tr><td>内容完整性</td><td>8/20</td><td><span class="badge badge-fail">Fail</span></td><td><div class="progress-bar"><div class="progress-fill fill-poor" style="width:40%"></div></div></td></tr>
+<tr><td>可操作性</td><td>10/20</td><td><span class="badge badge-partial">Partial</span></td><td><div class="progress-bar"><div class="progress-fill fill-low" style="width:50%"></div></div></td></tr>
+<tr><td>新手友好度</td><td>6/20</td><td><span class="badge badge-fail">Fail</span></td><td><div class="progress-bar"><div class="progress-fill fill-poor" style="width:30%"></div></div></td></tr>
+<tr><td>版本一致性</td><td>10/20</td><td><span class="badge badge-partial">Partial</span></td><td><div class="progress-bar"><div class="progress-fill fill-low" style="width:50%"></div></div></td></tr>
+</tbody>
+</table>
+</div>
+<h2>4. CORE-EEAT 维度得分</h2>
+<div class="card">
+<table>
+<thead><tr><th>维度</th><th>Pass</th><th>Partial</th><th>Fail</th><th>原始分</th><th>归一化</th><th>等级</th></tr></thead>
+<tbody>
+<tr><td><strong>C</strong> 上下文清晰度</td><td>1</td><td>4</td><td>5</td><td>25/100</td><td>25</td><td><span class="badge badge-poor">Poor</span></td></tr>
+<tr><td><strong>O</strong> 组织结构</td><td>0</td><td>8</td><td>1</td><td>40/90</td><td>44</td><td><span class="badge badge-low">Low</span></td></tr>
+<tr><td><strong>R</strong> 可引用性</td><td>1</td><td>4</td><td>5</td><td>30/100</td><td>30</td><td><span class="badge badge-poor">Poor</span></td></tr>
+<tr><td><strong>Exp</strong> 经验</td><td>0</td><td>1</td><td>3</td><td>5/40</td><td>13</td><td><span class="badge badge-poor">Poor</span></td></tr>
+<tr><td><strong>Ept</strong> 专业性</td><td>0</td><td>3</td><td>2</td><td>15/50</td><td>30</td><td><span class="badge badge-low">Low</span></td></tr>
+</tbody>
+</table>
+<div style="margin-top:12px;text-align:center">
+<span class="badge badge-pass">Pass: 2</span> <span class="badge badge-partial">Partial: 19</span> <span class="badge badge-fail">Fail: 17</span>
+</div>
+</div>
+<h2>5. 38项完整检查清单</h2>
+<div class="card">
+<ul class="check-list">
+<li><span class="tag tag-pass">Pass</span><strong>C01</strong> 意图匹配</li>
+<li><span class="tag tag-fail">Fail</span><strong>C02</strong> 直接回答 — 开头无核心答案摘要</li>
+<li><span class="tag tag-partial">Partial</span><strong>C03</strong> 搜索意图覆盖</li>
+<li><span class="tag tag-fail">Fail</span><strong>C04</strong> 定义先行 — iBMC/RAID/LOM/LVM无解释</li>
+<li><span class="tag tag-fail">Fail</span><strong>C05</strong> 覆盖边界 — 未声明文档范围</li>
+<li><span class="tag tag-fail">Fail</span><strong>C06</strong> 目标读者 — 未明确读者群体</li>
+<li><span class="tag tag-partial">Partial</span><strong>C07</strong> 语义连贯</li>
+<li><span class="tag tag-fail">Fail</span><strong>C08</strong> 用例映射 — 无ISO选择决策框架</li>
+<li><span class="tag tag-fail">Fail</span><strong>C09</strong> FAQ覆盖 — 完全没有FAQ</li>
+<li><span class="tag tag-partial">Partial</span><strong>C10</strong> 语义闭环</li>
+<li><span class="tag tag-partial">Partial</span><strong>O01</strong> 标题层级</li>
+<li><span class="tag tag-fail">Fail</span><strong>O02</strong> TL;DR摘要 — 完全缺失</li>
+<li><span class="tag tag-partial">Partial</span><strong>O03</strong> 数据表格</li>
+<li><span class="tag tag-partial">Partial</span><strong>O04</strong> 列表格式</li>
+<li><span class="tag tag-partial">Partial</span><strong>O06</strong> 章节切块</li>
+<li><span class="tag tag-partial">Partial</span><strong>O07</strong> 视觉层级</li>
+<li><span class="tag tag-partial">Partial</span><strong>O08</strong> 锚点导航</li>
+<li><span class="tag tag-partial">Partial</span><strong>O09</strong> 信息密度</li>
+<li><span class="tag tag-partial">Partial</span><strong>O10</strong> 多媒体结构</li>
+<li><span class="tag tag-partial">Partial</span><strong>R01</strong> 数据精确</li>
+<li><span class="tag tag-fail">Fail</span><strong>R02</strong> 外部引用 — 全文无外部引用</li>
+<li><span class="tag tag-fail">Fail</span><strong>R03</strong> 来源层级 — 无Tier1-2来源</li>
+<li><span class="tag tag-partial">Partial</span><strong>R04</strong> 证据-主张映射</li>
+<li><span class="tag tag-fail">Fail</span><strong>R05</strong> 方法透明</li>
+<li><span class="tag tag-fail">Fail</span><strong>R06</strong> 更新日期 — 无最后更新日期</li>
+<li><span class="tag tag-partial">Partial</span><strong>R07</strong> 实体精确</li>
+<li><span class="tag tag-partial">Partial</span><strong>R08</strong> 内链图谱</li>
+<li><span class="tag tag-pass">Pass</span><strong>R10</strong> 内容一致 — 数据自洽</li>
+<li><span class="tag tag-fail">Fail</span><strong>T06</strong> 修订历史 — 无修订历史</li>
+<li><span class="tag tag-fail">Fail</span><strong>Exp03</strong> 过程记录</li>
+<li><span class="tag tag-partial">Partial</span><strong>Exp06</strong> 遇到问题</li>
+<li><span class="tag tag-fail">Fail</span><strong>Exp08</strong> 量化指标</li>
+<li><span class="tag tag-fail">Fail</span><strong>Exp10</strong> 局限声明</li>
+<li><span class="tag tag-partial">Partial</span><strong>Ept03</strong> 专业词汇</li>
+<li><span class="tag tag-partial">Partial</span><strong>Ept04</strong> 技术深度</li>
+<li><span class="tag tag-fail">Fail</span><strong>Ept05</strong> 方法严谨</li>
+<li><span class="tag tag-fail">Fail</span><strong>Ept06</strong> 边界认知</li>
+<li><span class="tag tag-partial">Partial</span><strong>Ept08</strong> 推理透明</li>
+</ul>
+</div>
+<h2>6. Top 5 快速修复项</h2>
+<div class="card">
+<div class="fix-item fix-critical"><strong>1. 添加开篇摘要（C02）</strong><br>在第1行添加要点汇总框：openEuler可通过6步快速安装，最低配置4GB内存/120GB硬盘，预计耗时30-60分钟。</div>
+<div class="fix-item fix-critical"><strong>2. 添加FAQ章节（C09）</strong><br>在文末添加至少5个常见问题：安装失败如何回退、虚拟机安装步骤、启动顺序设置错误、分区方案建议、网络配置方法。</div>
+<div class="fix-item fix-critical"><strong>3. 添加术语表（C04）</strong><br>iBMC、RAID、LOM、LVM等术语首次出现时添加解释或链接。</div>
+<div class="fix-item fix-important"><strong>4. 添加ISO选择决策框（C08）</strong><br>服务器完整部署→Everything ISO；最小化安装→Standard ISO；网络安装→NetInst ISO。</div>
+<div class="fix-item fix-important"><strong>5. 添加操作验证步骤（Exp10）</strong><br>关键操作后添加验证命令+预期输出，如：<code>cat /etc/os-release</code></div>
+</div>
+<h2>7. Issue 提交模板</h2>
+<div class="card" style="background:#f8fafc">
+<h3 style="margin-top:0">标题</h3>
+<code style="display:block;padding:10px;background:#fff;border-radius:6px;font-size:.9rem">[文档质量] 快速入门页面存在多项内容质量问题，建议优化（综合评分36.7/100）</code>
+<h3>正文（可直接复制到 AtomGit Issue）</h3>
+<pre style="background:#fff;padding:16px;border-radius:6px;font-size:.85rem;overflow-x:auto">## 问题描述
+
+对 [快速入门](https://docs.openeuler.org/zh/docs/24.03_LTS_SP3/server/quickstart/quickstart/quick_start.html) 页面进行了基于 CORE-EEAT 框架（38项指标）+ 5维度文档框架的文档质量检视，综合评分 **36.7/100（Poor）**。
+
+## 评估概览
+
+| 指标 | 分数 | 等级 |
+|------|------|------|
+| 综合总分 | 36.7/100 | Poor |
+| 文档框架 | 46/100 | Low |
+| CORE-EEAT | 27.3/100 | Poor |
+| GEO可见性 | 33.0/100 | Poor |
+| SEO排名 | 21.5/100 | Poor |
+
+## Top 5 关键问题
+
+1. 缺少开篇摘要（C02 - Fail）
+2. 缺少FAQ章节（C09 - Fail）
+3. 关键术语缺少定义（C04 - Fail）
+4. 缺少ISO选择决策框架（C08 - Fail）
+5. 缺少操作验证步骤（Exp10 - Fail）
+
+## 涉及文件
+- 源文件: docs/zh/server/quickstart/quickstart/quick_start.md
+- 分支: stable-24.03_LTS_SP3
+
+## 评估方法
+基于 CORE-EEAT 内容基准框架（38项指标）+ 5维度文档框架</pre>
+</div>
+<div class="footer">
+<p>基于 <a href="https://github.com/aaron-he-zhu/core-eeat-content-benchmark" target="_blank">CORE-EEAT 内容基准</a> · 38项指标框架 · 5维度文档框架</p>
+<p>检视工具: doc-quality-auditor v1.0.0 · 检视日期: 2026-06-10</p>
+</div>
+</div>
+</body>
+</html>
