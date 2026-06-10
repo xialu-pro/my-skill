@@ -1,0 +1,78 @@
+<span class="badge badge-fail">Fail: 19</span>
+</div>
+
+<h2>8. 维度得分汇总表</h2>
+<div class="card" style="overflow-x:auto">
+<table>
+<thead><tr><th>维度</th><th>Pass</th><th>Partial</th><th>Fail</th><th>原始分</th><th>归一化分数</th><th>等级</th></tr></thead>
+<tbody>
+<tr><td><strong>C</strong> 上下文清晰度</td><td>1</td><td>4</td><td>5</td><td>30/100</td><td>30</td><td><span class="badge badge-fail">Poor</span></td></tr>
+<tr><td><strong>O</strong> 组织结构</td><td>0</td><td>8</td><td>1</td><td>40/90</td><td>44</td><td><span class="badge badge-partial">Low</span></td></tr>
+<tr><td><strong>R</strong> 可引用性(含T06)</td><td>1</td><td>4</td><td>5</td><td>37/100</td><td>37</td><td><span class="badge badge-fail">Poor</span></td></tr>
+<tr><td><strong>Exp</strong> 经验</td><td>0</td><td>1</td><td>3</td><td>5/40</td><td>13</td><td><span class="badge badge-fail">Poor</span></td></tr>
+<tr><td><strong>Ept</strong> 专业性</td><td>0</td><td>2</td><td>3</td><td>19/50</td><td>38</td><td><span class="badge badge-partial">Low</span></td></tr>
+</tbody>
+</table>
+</div>
+
+<h2>9. Issue 提交模板</h2>
+<div class="card" style="background:#f1f5f9">
+<h3 style="margin-top:0">标题</h3>
+<code style="display:block;padding:10px;background:#fff;border-radius:6px;font-size:.9rem">[文档质量] 快速入门页面存在多项内容质量问题，建议优化（综合评分37/100）</code>
+<h3>正文（可直接复制到 Gitee Issue）</h3>
+<pre style="background:#fff;padding:16px;border-radius:6px;font-size:.85rem;overflow-x:auto;white-space:pre-wrap">## 问题描述
+
+对 [快速入门](https://docs.openeuler.org/zh/docs/24.03_LTS_SP3/server/quickstart/quickstart/quick_start.html) 页面进行了基于 CORE-EEAT 框架（38项指标）的文档质量检视，综合评分 **37/100（Poor）**，存在多项需优化的问题。
+
+## 评估概览
+
+| 指标 | 分数 | 等级 |
+|------|------|------|
+| 综合总分 | 37/100 | Poor（需重构） |
+| 文档框架 | 41/100 | Low |
+| CORE-EEAT | 33/100 | Poor |
+| GEO可见性 | 40.3/100 | Low |
+| SEO排名 | 25.6/100 | Poor |
+
+## Top 5 关键问题
+
+### 1. 🔴 缺少开篇摘要（C02 直接回答 - Fail）
+核心答案未在前150字内给出。建议在第1行添加要点汇总框。
+
+### 2. 🔴 缺少FAQ/常见问题章节（C09/D02 - Fail）
+文档完全没有FAQ，安装失败时用户无参考。建议添加至少5个常见问题。
+
+### 3. 🔴 关键术语缺少定义（C04 定义先行 - Fail）
+iBMC、RAID、LOM、LVM等术语首次出现时无解释。建议添加术语表。
+
+### 4. 🟡 缺少操作验证步骤和预期输出（D03 可操作性 - Fail）
+关键操作后无验证步骤。建议添加验证命令+预期输出。
+
+### 5. 🟡 缺少场景选择决策框架（C08 用例映射 - Fail）
+未提供ISO类型选择指引。建议添加决策框。
+
+## 其他重要问题
+- C05: 未声明覆盖边界
+- C06: 未明确目标读者
+- O02: 完全无TL;DR摘要
+- R02: 全文无外部引用
+- R06: 无最后更新日期
+- T06: 无修订历史
+- D04: 无概念解释、无效果验证、无进度感知
+
+## 涉及文件
+- 源文件: docs/zh/docs/Quickstart/quickstart/quick_start.md
+- 分支: stable-24.03_LTS_SP3
+
+## 评估方法
+基于 CORE-EEAT 内容基准框架（38项文档级质量指标），详见 https://github.com/aaron-he-zhu/core-eeat-content-benchmark</pre>
+</div>
+
+<div class="footer">
+<p>基于 <a href="https://github.com/aaron-he-zhu/core-eeat-content-benchmark" target="_blank">CORE-EEAT 内容基准</a> · 38项指标框架 · 5维度文档框架</p>
+<p>检视工具: doc-quality-auditor v1.0.0 · 检视日期: 2026-06-10</p>
+</div>
+
+</div>
+</body>
+</html>
