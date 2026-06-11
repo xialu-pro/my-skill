@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>openEuler 24.03 LTS SP3 快速入门 - 文档质量检查报告</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans SC",sans-serif;background:#f0f2f5;color:#1a1a2e;line-height:1.7;padding:20px}
+.container{max-width:960px;margin:0 auto}
+h1{font-size:1.8rem;text-align:center;margin-bottom:8px;color:#1a1a2e}
+h2{font-size:1.3rem;margin:28px 0 14px;padding-bottom:8px;border-bottom:2px solid #e2e8f0;color:#334155}
+h3{font-size:1.1rem;margin:16px 0 8px;color:#475569}
+.subtitle{text-align:center;color:#64748b;margin-bottom:24px;font-size:.95rem}
+.card{background:#fff;border-radius:12px;padding:24px;margin-bottom:20px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.score-hero{text-align:center;padding:32px}
+.score-big{font-size:3.5rem;font-weight:800;line-height:1}
+.score-label{font-size:1rem;color:#64748b;margin-top:4px}
+.score-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-top:20px}
+.score-item{text-align:center;padding:12px;border-radius:8px;background:#f8fafc}
+.score-item .num{font-size:1.6rem;font-weight:700}
+.score-item .lbl{font-size:.8rem;color:#64748b}
+table{width:100%;border-collapse:collapse;font-size:.9rem}
+th{background:#f1f5f9;padding:10px 12px;text-align:left;font-weight:600;border-bottom:2px solid #e2e8f0}
+td{padding:10px 12px;border-bottom:1px solid #f1f5f9}
+tr:hover td{background:#fafbfc}
+.badge{display:inline-block;padding:3px 10px;border-radius:12px;font-size:.8rem;font-weight:600}
+.badge-excellent{background:#d1fae5;color:#065f46}
+.badge-good{background:#dbeafe;color:#1e40af}
+.badge-medium{background:#fef9c3;color:#854d0e}
+.badge-pass{background:#dcfce7;color:#166534}
+.badge-partial{background:#fef9c3;color:#854d0e}
+.badge-fail{background:#fee2e2;color:#991b1b}
+.badge-poor{background:#fee2e2;color:#991b1b}
+.badge-low{background:#fed7aa;color:#9a3412}
+.progress-bar{height:8px;background:#e2e8f0;border-radius:4px;overflow:hidden;margin-top:4px}
+.progress-fill{height:100%;border-radius:4px}
+.fill-excellent{background:#10b981}
+.fill-good{background:#3b82f6}
+.fill-medium{background:#eab308}
+.fill-poor{background:#ef4444}
+.fill-low{background:#f97316}
+.check-list{list-style:none}
+.check-list li{padding:8px 0;border-bottom:1px solid #f1f5f9;display:flex;align-items:flex-start;gap:8px}
+.check-list li:last-child{border-bottom:none}
+.tag{display:inline-block;padding:2px 8px;border-radius:4px;font-size:.75rem;font-weight:600;margin-right:6px;white-space:nowrap}
+.tag-pass{background:#dcfce7;color:#166534}
+.tag-partial{background:#fef9c3;color:#854d0e}
+.tag-fail{background:#fee2e2;color:#991b1b}
+.fix-item{padding:14px;margin-bottom:12px;border-radius:8px;border-left:4px solid}
+.fix-critical{border-color:#ef4444;background:#fef2f2}
+.fix-important{border-color:#f97316;background:#fff7ed}
+.fix-moderate{border-color:#eab308;background:#fefce8}
+.veto-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.veto-item{display:flex;align-items:center;gap:10px;padding:14px;border-radius:8px;background:#f0fdf4;border:1px solid #bbf7d0}
+.veto-icon{width:28px;height:28px;border-radius:50%;background:#22c55e;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.9rem;flex-shrink:0}
+.veto-text{font-weight:600;color:#166534}
+.veto-desc{font-size:.85rem;color:#15803d}
+.section-group{margin-bottom:8px}
+.section-title{font-weight:700;font-size:.95rem;padding:8px 12px;background:#f1f5f9;border-radius:6px;margin-bottom:4px;color:#334155}
+.geo-seo-section{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:640px){.geo-seo-section{grid-template-columns:1fr}.veto-grid{grid-template-columns:1fr}}
+.geo-card{padding:16px;border-radius:8px;background:#f8fafc;border:1px solid #e2e8f0}
+.geo-card h4{margin:0 0 10px;font-size:.95rem;color:#334155}
+.geo-step{display:flex;align-items:flex-start;gap:8px;margin-bottom:8px;font-size:.85rem}
+.geo-num{width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:700;flex-shrink:0;color:#fff}
+.geo-num-geo{background:#3b82f6}
+.geo-num-seo{background:#8b5cf6}
+.copy-btn{display:inline-flex;align-items:center;gap:4px;padding:6px 14px;border:1px solid #cbd5e1;border-radius:6px;background:#fff;cursor:pointer;font-size:.8rem;color:#475569;transition:all .2s}
+.copy-btn:hover{background:#f1f5f9;border-color:#94a3b8}
+.copy-btn.copied{background:#dcfce7;border-color:#86efac;color:#166534}
+.footer{text-align:center;color:#94a3b8;font-size:.8rem;margin-top:32px;padding:16px}
+pre{white-space:pre-wrap;word-break:break-word}
+.dim-row td{vertical-align:middle}
+.dim-label{font-weight:600}
+.stats-inline{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;justify-content:center}
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>openEuler 24.03 LTS SP3 快速入门 - 文档质量检查报告</h1>
+<p class="subtitle">quick_start_new.md · 检视日期: 2026-06-11 · 内容类型: 快速入门指南 · 目标: GEO + SEO 双优先</p>
+
+<h2>1. 综合评分</h2>
+<div class="card score-hero">
+<div class="score-big" style="color:#3b82f6">80.8<span style="font-size:1.5rem;color:#94a3b8">/100</span></div>
+<div class="score-label">综合总分 · <span class="badge badge-good">Good</span></div>
+<div class="score-grid">
+<div class="score-item" style="grid-column:1/-1;padding:8px;background:transparent;border-bottom:2px solid #e2e8f0;margin-bottom:4px">
+<div style="font-size:.85rem;color:#64748b;text-align:left">├ 文档框架（人因友好）</div>
+<div class="num" style="color:#10b981;font-size:1.4rem;text-align:left">87<span style="font-size:.8rem;color:#94a3b8">/100</span> <span class="badge badge-excellent">Excellent</span></div>
+</div>
+<div class="score-item" style="grid-column:1/-1;padding:8px;background:transparent;border-bottom:2px solid #e2e8f0;margin-bottom:4px">
+<div style="font-size:.85rem;color:#64748b;text-align:left">└ CORE-EEAT（GEO+SEO优化）</div>
+<div class="num" style="color:#3b82f6;font-size:1.4rem;text-align:left">74.5<span style="font-size:.8rem;color:#94a3b8">/100</span> <span class="badge badge-good">Good</span></div>
+</div>
+<div class="score-item" style="margin-left:40px">
+<div class="num" style="color:#3b82f6">77.8</div>
+<div class="lbl">├ GEO可见性</div>
+<div><span class="badge badge-good">Good</span></div>
+</div>
+<div class="score-item" style="margin-left:40px">
+<div class="num" style="color:#eab308">71.3</div>
+<div class="lbl">└ SEO排名</div>
+<div><span class="badge badge-medium">Medium</span></div>
+</div>
+</div>
+</div>
+
+<h2>2. Veto 检查</h2>
+<div class="card">
+<div class="veto-grid">
+<div class="veto-item">
+<div class="veto-icon">✓</div>
+<div>
+<div class="veto-text">C01 意图匹配</div>
+<div class="veto-desc">标题承诺完全兑现</div>
+</div>
+</div>
+<div class="veto-item">
+<div class="veto-icon">✓</div>
+<div>
+<div class="veto-text">R10 内容一致</div>
+<div class="veto-desc">数据自洽，无矛盾</div>
+</div>
+</div>
+</div>
+</div>
+
+<h2>3. 文档框架评分（5维度）</h2>
+<div class="card">
+<table>
+<thead><tr><th>维度</th><th>分数</th><th>等级</th><th>进度</th></tr></thead>
+<tbody>
+<tr><td>D01 结构逻辑性</td><td>16/20</td><td><span class="badge badge-pass">Pass</span></td><td><div class="progress-bar"><div class="progress-fill fill-good" style="width:80%"></div></div></td></tr>
+<tr><td>D02 内容完整性</td><td>17/20</td><td><span class="badge badge-pass">Pass</span></td><td><div class="progress-bar"><div class="progress-fill fill-good" style="width:85%"></div></div></td></tr>
+<tr><td>D03 可操作性</td><td>16/20</td><td><span class="badge badge-pass">Pass</span></td><td><div class="progress-bar"><div class="progress-fill fill-good" style="width:80%"></div></div></td></tr>
+<tr><td>D04 新手友好度</td><td>18/20</td><td><span class="badge badge-pass">Pass</span></td><td><div class="progress-bar"><div class="progress-fill fill-excellent" style="width:90%"></div></div></td></tr>
+<tr><td>D05 版本一致性</td><td>20/20</td><td><span class="badge badge-excellent">Excellent</span></td><td><div class="progress-bar"><div class="progress-fill fill-excellent" style="width:100%"></div></div></td></tr>
+</tbody>
+</table>
+</div>
+
+<h2>4. CORE-EEAT 维度得分</h2>
+<div class="card">
+<table>
+<thead><tr><th>维度</th><th>Pass</th><th>Partial</th><th>Fail</th><th>归一化</th><th>等级</th><th>进度</th></tr></thead>
+<tbody>
+<tr class="dim-row"><td class="dim-label">C 上下文清晰度</td><td>5</td><td>4</td><td>1</td><td>75/100</td><td><span class="badge badge-good">Good</span></td><td><div class="progress-bar"><div class="progress-fill fill-good" style="width:75%"></div></div></td></tr>
+<tr class="dim-row"><td class="dim-label">O 组织结构</td><td>6</td><td>2</td><td>1</td><td>83.3/100</td><td><span class="badge badge-good">Good</span></td><td><div class="progress-bar"><div class="progress-fill fill-good" style="width:83.3%"></div></div></td></tr>
+<tr class="dim-row"><td class="dim-label">R 可引用性</td><td>4</td><td>5</td><td>1</td><td>75/100</td><td><span class="badge badge-medium">Medium</span></td><td><div class="progress-bar"><div class="progress-fill fill-medium" style="width:75%"></div></div></td></tr>
+<tr class="dim-row"><td class="dim-label">Exp 经验</td><td>1</td><td>3</td><td>0</td><td>62.5/100</td><td><span class="badge badge-medium">Medium</span></td><td><div class="progress-bar"><div class="progress-fill fill-medium" style="width:62.5%"></div></div></td></tr>
+<tr class="dim-row"><td class="dim-label">Ept 专业性</td><td>3</td><td>2</td><td>0</td><td>80/100</td><td><span class="badge badge-good">Good</span></td><td><div class="progress-bar"><div class="progress-fill fill-good" style="width:80%"></div></div></td></tr>
+</tbody>
+</table>
+<div class="stats-inline">
+<span class="badge badge-pass">Pass: 19</span>
+<span class="badge badge-partial">Partial: 16</span>
+<span class="badge badge-fail">Fail: 3</span>
+</div>
+</div>
+
+<h2>5. 38项完整检查清单</h2>
+<div class="card">
+
+<div class="section-group">
+<div class="section-title">C - 上下文清晰度</div>
+<ul class="check-list">
+<li><span class="tag tag-pass">Pass</span><strong>C01</strong> 意图匹配 — 标题承诺完全兑现</li>
+<li><span class="tag tag-pass">Pass</span><strong>C02</strong> 直接回答 — 前150字内包含要点汇总</li>
+<li><span class="tag tag-partial">Partial</span><strong>C03</strong> 查询覆盖 — 缺少"部署""服务器安装教程"等变体</li>
+<li><span class="tag tag-partial">Partial</span><strong>C04</strong> 定义先行 — ISO、sha256sum、dnf等术语未定义</li>
+<li><span class="tag tag-pass">Pass</span><strong>C05</strong> 主题范围 — 明确声明适用范围</li>
+<li><span class="tag tag-pass">Pass</span><strong>C06</strong> 受众定位 — 明确目标读者</li>
+<li><span class="tag tag-partial">Partial</span><strong>C07</strong> 语义连贯 — 步骤间缺少过渡语句</li>
+<li><span class="tag tag-partial">Partial</span><strong>C08</strong> 用例映射 — 缺少iBMC vs物理介质决策框架</li>
+<li><span class="tag tag-partial">Partial</span><strong>C09</strong> FAQ覆盖 — 5个FAQ，未达8+理想数量</li>
+<li><span class="tag tag-pass">Pass</span><strong>C10</strong> 语义闭环 — "下一步"回扣开篇</li>
+</ul>
+</div>
+
+<div class="section-group">
+<div class="section-title">O - 组织结构</div>
+<ul class="check-list">
+<li><span class="tag tag-pass">Pass</span><strong>O01</strong> 标题层级 — H1→H2→H3正确嵌套</li>
+<li><span class="tag tag-pass">Pass</span><strong>O02</strong> 摘要框 — 开头有要点汇总blockquote</li>
+<li><span class="tag tag-pass">Pass</span><strong>O03</strong> 数据表格 — 硬件要求/ISO选择/配置项用表格</li>
+<li><span class="tag tag-pass">Pass</span><strong>O04</strong> 列表格式 — 有序/无序列表使用适当</li>
+<li><span class="tag tag-pass">Pass</span><strong>O06</strong> 章节切块 — 每章节单一主题</li>
+<li><span class="tag tag-partial">Partial</span><strong>O07</strong> 视觉层级 — 关键概念未统一加粗</li>
+<li><span class="tag tag-fail">Fail</span><strong>O08</strong> 锚点导航 — 超2000字无目录和锚点</li>
+<li><span class="tag tag-partial">Partial</span><strong>O09</strong> 信息密度 — 密码复杂度重复出现</li>
+<li><span class="tag tag-pass">Pass</span><strong>O10</strong> 多媒体结构 — 图片有图号和描述</li>
+</ul>
+</div>
+
+<div class="section-group">
+<div class="section-title">R - 可引用性</div>
+<ul class="check-list">
+<li><span class="tag tag-pass">Pass</span><strong>R01</strong> 数据精确 — ≥5个精确数据点</li>
+<li><span class="tag tag-partial">Partial</span><strong>R02</strong> 引用密度 — 引用密度不足</li>
+<li><span class="tag tag-pass">Pass</span><strong>R03</strong> 来源层级 — ≥3个Tier1-2来源</li>
+<li><span class="tag tag-partial">Partial</span><strong>R04</strong> 证据-主张映射 — 部分主张无证据</li>
+<li><span class="tag tag-partial">Partial</span><strong>R05</strong> 方法透明 — 无正式方法论记录</li>
+<li><span class="tag tag-pass">Pass</span><strong>R06</strong> 时间戳与版本 — 标注最后更新日期</li>
+<li><span class="tag tag-pass">Pass</span><strong>R07</strong> 实体精确 — 全名使用</li>
+<li><span class="tag tag-partial">Partial</span><strong>R08</strong> 内链图谱 — 缺少内部交叉引用</li>
+<li><span class="tag tag-pass">Pass</span><strong>R10</strong> 内容一致 — 数据自洽</li>
+<li><span class="tag tag-partial">Partial</span><strong>T06</strong> 更正与更新政策 — 有反馈机制无修订历史</li>
+</ul>
+</div>
+
+<div class="section-group">
+<div class="section-title">Exp - 经验</div>
+<ul class="check-list">
+<li><span class="tag tag-partial">Partial</span><strong>Exp03</strong> 过程记录 — 缺少每步详细时间线</li>
+<li><span class="tag tag-pass">Pass</span><strong>Exp06</strong> 遇到问题 — FAQ覆盖5个问题</li>
+<li><span class="tag tag-partial">Partial</span><strong>Exp08</strong> 量化指标 — 缺少安装时间分解</li>
+<li><span class="tag tag-partial">Partial</span><strong>Exp10</strong> 局限声明 — 未声明测试硬件配置</li>
+</ul>
+</div>
+
+<div class="section-group">
+<div class="section-title">Ept - 专业性</div>
+<ul class="check-list">
+<li><span class="tag tag-pass">Pass</span><strong>Ept03</strong> 专业词汇 — 术语准确使用</li>
+<li><span class="tag tag-pass">Pass</span><strong>Ept04</strong> 技术深度 — 参数可执行</li>
+<li><span class="tag tag-pass">Pass</span><strong>Ept05</strong> 方法严谨 — 遵循官方流程</li>
+<li><span class="tag tag-partial">Partial</span><strong>Ept06</strong> 边界认知 — 仅1个边界情况</li>
+<li><span class="tag tag-partial">Partial</span><strong>Ept08</strong> 推理透明 — 推荐未解释原因</li>
+</ul>
+</div>
+
+</div>
+
+<h2>6. Top 5 快速修复项</h2>
+<div class="card">
+<div class="fix-item fix-critical">
+<strong>1. O08 锚点导航</strong><br>
+在文档开头添加目录含锚点链接。当前状态：Fail，超2000字无目录和锚点。修复后预计 +10 分。
+</div>
+<div class="fix-item fix-important">
+<strong>2. C04 定义先行</strong><br>
+首次使用 ISO / sha256sum / dnf 等术语时添加括号定义。当前状态：Partial → 修复后 Pass，预计 +5 分。
+</div>
+<div class="fix-item fix-important">
+<strong>3. C09 FAQ覆盖</strong><br>
+FAQ 从 5 个扩展到 8+ 个，覆盖"部署""服务器安装教程"等高频搜索意图。当前状态：Partial → Pass，预计 +5 分。
+</div>
+<div class="fix-item fix-moderate">
+<strong>4. R02 引用密度</strong><br>
+在硬件要求 / iBMC / FAQ 章节添加外部引用链接。当前状态：Partial → Pass，预计 +5 分。
+</div>
+<div class="fix-item fix-moderate">
+<strong>5. Exp10 局限声明</strong><br>
+扩展底部声明，明确测试硬件配置和未覆盖场景。当前状态：Partial → Pass，预计 +5 分。
+</div>
+</div>
+
+<h2>7. GEO vs SEO 分离建议</h2>
+<div class="card">
+<div class="geo-seo-section">
+<div class="geo-card">
+<h4>🔵 GEO 优先（AI可见性）</h4>
+<div class="geo-step"><div class="geo-num geo-num-geo">1</div><div>添加目录锚点 <strong>(O08)</strong></div></div>
+<div class="geo-step"><div class="geo-num geo-num-geo">2</div><div>扩展FAQ <strong>(C09)</strong></div></div>
+<div class="geo-step"><div class="geo-num geo-num-geo">3</div><div>增加引用密度 <strong>(R02)</strong></div></div>
+<div class="geo-step"><div class="geo-num geo-num-geo">4</div><div>定义术语 <strong>(C04)</strong></div></div>
+<div class="geo-step"><div class="geo-num geo-num-geo">5</div><div>添加决策框架 <strong>(C08)</strong></div></div>
+</div>
+<div class="geo-card">
+<h4>🟣 SEO 优先（搜索引擎排名）</h4>
+<div class="geo-step"><div class="geo-num geo-num-seo">1</div><div>关键概念加粗 <strong>(O07)</strong></div></div>
+<div class="geo-step"><div class="geo-num geo-num-seo">2</div><div>添加修订历史 <strong>(T06)</strong></div></div>
+<div class="geo-step"><div class="geo-num geo-num-seo">3</div><div>增加内链 <strong>(R08)</strong></div></div>
+<div class="geo-step"><div class="geo-num geo-num-seo">4</div><div>量化数据 <strong>(Exp08)</strong></div></div>
+<div class="geo-step"><div class="geo-num geo-num-seo">5</div><div>边界情况 <strong>(Ept06)</strong></div></div>
+</div>
+</div>
+</div>
+
+<h2>8. Issue 提交模板</h2>
+<div class="card" style="background:#f8fafc">
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+<h3 style="margin:0">标题</h3>
+<button class="copy-btn" onclick="copyIssue()">📋 一键复制</button>
+</div>
+<code style="display:block;padding:10px;background:#fff;border-radius:6px;font-size:.9rem">[文档质量] quick_start_new.md 快速入门页面优化建议（综合评分80.8/100）</code>
+<h3>正文（可直接复制到 AtomGit Issue）</h3>
+<pre id="issue-template" style="background:#fff;padding:16px;border-radius:6px;font-size:.85rem;overflow-x:auto">## 问题描述
+
+对 [openEuler 24.03 LTS SP3 快速入门](quick_start_new.md) 页面进行了基于 CORE-EEAT 框架（38项指标）+ 5维度文档框架的文档质量检视，综合评分 **80.8/100（Good）**。
+
+## 评估概览
+
+| 指标 | 分数 | 等级 |
+|------|------|------|
+| 综合总分 | 80.8/100 | Good |
+| 文档框架 | 87/100 | Excellent |
+| CORE-EEAT | 74.5/100 | Good |
+| GEO可见性 | 77.8/100 | Good |
+| SEO排名 | 71.3/100 | Medium |
+
+## Veto 检查
+
+- C01 意图匹配: PASS
+- R10 内容一致: PASS
+
+## Top 5 关键问题
+
+1. 缺少目录锚点导航（O08 - Fail）— 超2000字文档无目录和锚点
+2. 关键术语缺少定义（C04 - Partial）— ISO/sha256sum/dnf等术语未定义
+3. FAQ数量不足（C09 - Partial）— 5个FAQ，未达8+理想数量
+4. 引用密度不足（R02 - Partial）— 硬件要求/iBMC/FAQ章节缺少外部引用
+5. 缺少局限声明（Exp10 - Partial）— 未声明测试硬件配置和未覆盖场景
+
+## GEO vs SEO 优化建议
+
+**GEO优先**: 添加目录锚点(O08) → 扩展FAQ(C09) → 增加引用密度(R02) → 定义术语(C04) → 添加决策框架(C08)
+
+**SEO优先**: 关键概念加粗(O07) → 添加修订历史(T06) → 增加内链(R08) → 量化数据(Exp08) → 边界情况(Ept06)
+
+## 涉及文件
+
+- 源文件: quick_start_new.md
+
+## 评估方法
+
+基于 CORE-EEAT 内容基准框架（38项指标）+ 5维度文档框架</pre>
+</div>
+
+<div class="footer">
+<p>检视工具 doc-quality-auditor v1.0.0 | 检视日期 2026-06-11</p>
+</div>
+
+</div>
+
+<script>
+function copyIssue(){
+  var t=document.getElementById("issue-template").textContent;
+  navigator.clipboard.writeText(t).then(function(){
+    var b=document.querySelector(".copy-btn");
+    b.textContent="✓ 已复制";
+    b.classList.add("copied");
+    setTimeout(function(){
+      b.textContent="📋 一键复制";
+      b.classList.remove("copied");
+    },2000);
+  });
+}
+</script>
+</body>
+</html>
